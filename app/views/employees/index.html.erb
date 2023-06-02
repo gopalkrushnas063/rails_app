@@ -1,0 +1,18 @@
+<table class="table table-bordered mt-4">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.personal_email %></td>
+        <td><%= employee.full_address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
