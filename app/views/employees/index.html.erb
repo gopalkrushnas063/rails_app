@@ -1,4 +1,5 @@
 <div class="col-lg-12">
+    <%= flash[:notice] %>
   <div class="card rounded-0 mt-5 mb-5">
     <div class="card-body">
       <h2 class="text-center">List Of Employees</h2>
@@ -6,19 +7,23 @@
   </div>
   <%= link_to 'Create New Employee', new_employee_path, class: "btn btn-primary btn-lg mb-4 rounded-0" %>
   <table class="table table-bordered">
-    <thead>
+    <thead class="text-center">
       <tr>
         <th>Name</th>
         <th>Email</th>
         <th>Address</th>
+        <th>Actions</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
       <% @employees.each do |employee| %>
         <tr>
           <td><%= employee.name %></td>
           <td><%= employee.personal_email %></td>
           <td><%= employee.full_address %></td>
+          <td>
+            <%= link_to 'Edit', edit_employee_path(employee), class: "btn btn-primary" %>
+          </td>
         </tr>
       <% end %>
     </tbody>

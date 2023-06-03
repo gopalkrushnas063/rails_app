@@ -1,0 +1,105 @@
+<%= form_with model: employee do |form| %>
+  <div class="row">
+    
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= form.label :first_name, class: 'mb-2' %>
+        <%= form.text_field :first_name, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:first_name) %>
+          <p class="text-danger"><%= @employee.errors[:first_name].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= form.label :middle_name, class: 'mb-2' %>
+        <%= form.text_field :middle_name, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:middle_name) %>
+          <p class="text-danger"><%= @employee.errors[:middle_name].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= form.label :last_name, class: 'mb-2' %>
+        <%= form.text_field :last_name, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:last_name) %>
+          <p class="text-danger"><%= @employee.errors[:last_name].first %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= form.label :email, class: 'mb-2' %>
+        <%= form.email_field :personal_email, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:personal_email) %>
+          <p class="text-danger"><%= @employee.errors[:personal_email].first %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="form-group">
+        <%= form.label :address_line_1, class: 'mb-2' %>
+        <%= form.text_field :address_line_1, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:address_line_1) %>
+          <p class="text-danger"><%= @employee.errors[:address_line_1].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="form-group">
+        <%= form.label :address_line_2, class: 'mb-2' %>
+        <%= form.text_field :address_line_2, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:address_line_2) %>
+          <p class="text-danger"><%= @employee.errors[:address_line_2].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= form.label :city, class: 'mb-2' %>
+        <%= form.text_field :city, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:city) %>
+          <p class="text-danger"><%= @employee.errors[:city].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= form.label :state, class: 'mb-2' %>
+        <%= form.text_field :state, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:state) %>
+          <p class="text-danger"><%= @employee.errors[:state].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= form.label :pincode, class: 'mb-2' %>
+        <%= form.text_field :pincode, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:pincode) %>
+          <p class="text-danger"><%= @employee.errors[:pincode].first %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= form.label :country, class: 'mb-2' %>
+        <%= form.text_field :country, class: 'form-control form-control-lg rounded-0' %>
+        <% if @employee.errors.has_key?(:country) %>
+          <p class="text-danger"><%= @employee.errors[:country].first %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 mt-4">
+      <%= form.submit class: "btn btn-success btn-lg rounded-0" %>
+      <%= link_to "Back to Employees", employees_path, class: "btn btn-outline-primary btn-lg rounded-0"%>
+    </div>
+  </div>
+<% end %>
