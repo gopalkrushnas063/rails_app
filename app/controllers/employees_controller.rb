@@ -7,6 +7,7 @@ class EmployeesController < ApplicationController
         @employee = Employee.new
     end
 
+    # New Employee Creation
     def create
         @employee = Employee.new(employee_params)
       
@@ -18,8 +19,33 @@ class EmployeesController < ApplicationController
         end
     end
     
+    # Find existing employee information for edit
     def edit
         @employee = Employee.find(params[:id])
+    end
+
+    def update
+        @employee = Employee.find(params[:id])
+
+        if @employee.update(employee_params)
+            redirect_to employees_path, notice: "Employee information has been updated successfully"
+        else
+            puts @employee.errors.full_messages
+            render :edit
+        end
+    end
+
+    # View particular employee information
+    def show
+        @employee = Employee.find(params[:id])
+    end
+
+    # Delete particular employee by id 
+    def destroy
+        @employee = Employee.find(params[:id])
+        if @employee.destroy
+            redirect_to employees_path, notice: "Employee information has been deleted successfully"
+        end
     end
 
     private

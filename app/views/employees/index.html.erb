@@ -23,6 +23,8 @@
           <td><%= employee.full_address %></td>
           <td>
             <%= link_to 'Edit', edit_employee_path(employee), class: "btn btn-primary" %>
+            <%= link_to 'View', employee_path(employee), class: "btn btn-info" %>
+            <%= link_to 'Delete', employee_path(employee), class: "btn btn-danger", method: :delete, data: {confirm: 'Aru you sure to delete this employee?'} %>
           </td>
         </tr>
       <% end %>
