@@ -1,4 +1,8 @@
 class EmployeesController < ApplicationController
+    before_action :set_employee, only: [:edit, :update, :show, :destroy]
+
+
+
     def index
         @employees = Employee.all
     end
@@ -21,12 +25,9 @@ class EmployeesController < ApplicationController
     
     # Find existing employee information for edit
     def edit
-        @employee = Employee.find(params[:id])
     end
 
     def update
-        @employee = Employee.find(params[:id])
-
         if @employee.update(employee_params)
             redirect_to employees_path, notice: "Employee information has been updated successfully"
         else
@@ -37,12 +38,10 @@ class EmployeesController < ApplicationController
 
     # View particular employee information
     def show
-        @employee = Employee.find(params[:id])
     end
 
     # Delete particular employee by id 
     def destroy
-        @employee = Employee.find(params[:id])
         if @employee.destroy
             redirect_to employees_path, notice: "Employee information has been deleted successfully"
         end
@@ -65,5 +64,9 @@ class EmployeesController < ApplicationController
         )
     end
       
+    def set_employee
+        @employee = Employee.find(params[:id])
+    end
+
 end
 
