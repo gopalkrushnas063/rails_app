@@ -1,5 +1,25 @@
 <div class="col-lg-12">
+  <div id="flash-notice" data-type="<%= flash[:notice].present? ? 'notice' : '' %>">
     <%= flash[:notice] %>
+  </div>
+  <div id="flash-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Flash Notice</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="flash-message"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="card rounded-0 mt-5 mb-5">
     <div class="card-body">
       <h2 class="text-center">List Of Employees</h2>
@@ -22,9 +42,16 @@
           <td><%= employee.personal_email %></td>
           <td><%= employee.full_address %></td>
           <td>
-            <%= link_to 'Edit', edit_employee_path(employee), class: "btn btn-primary" %>
-            <%= link_to 'View', employee_path(employee), class: "btn btn-info" %>
-            <%= link_to 'Delete', employee_path(employee), class: "btn btn-danger", method: :delete, data: {confirm: 'Aru you sure to delete this employee?'} %>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Actions
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Edit', edit_employee_path(employee), class: "dropdown-item" %></li>
+                <li><%= link_to 'View', employee_path(employee), class: "dropdown-item" %></li>
+                <li><%= link_to 'Delete', employee_path(employee), class: "dropdown-item", method: :delete, data: {confirm: 'Are you sure to delete this employee?'} %></li>
+              </ul>
+            </div>
           </td>
         </tr>
       <% end %>
